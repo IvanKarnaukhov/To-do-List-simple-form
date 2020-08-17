@@ -19,11 +19,11 @@ function App() {
     const markAsDone = async (todoId) => {
         await axios.put(`http://localhost:5000/todo/${todoId}`)
             .then(function (response) {
-                    const newList = [...list].map(el => {
-                        if (el._id === todoId) return {...el, done: true}
-                        return el
-                    })
-                    setList(newList)
+                //     const newList = [...list].map(el => {
+                //         if (el._id === todoId) return {...el, done: true}
+                //         return el
+                //     })
+                //     setList(newList)
                 }
             )
             .catch(function (error) {
