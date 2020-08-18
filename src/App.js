@@ -16,14 +16,14 @@ function App() {
     const [list, setList] = useState([]) //создали массив обектов
 
 
-    const markAsDone = async (todoId) => {
-        await axios.put(`http://localhost:5000/todo/${todoId}`)
+    const markAsDone = async (todoId, done) => {
+        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
             .then(function (response) {
-                //     const newList = [...list].map(el => {
-                //         if (el._id === todoId) return {...el, done: true}
-                //         return el
-                //     })
-                //     setList(newList)
+                    //     const newList = [...list].map(el => {
+                    //         if (el._id === todoId) return {...el, done: true}
+                    //         return el
+                    //     })
+                    //     setList(newList)
                 }
             )
             .catch(function (error) {
@@ -85,12 +85,33 @@ function App() {
     };
 
 
-    const todoUpdate = (todoId, newTodo) => {
-        const newList = [...list].map(el => {
-            if (el._id === todoId) return {...el, title: newTodo}
-            return el
-        })
-        setList(newList)
+    const todoUpdate = async (todoId, newTodo) => {
+        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
+            .then(function (response) {
+                    //     const newList = [...list].map(el => {
+                    //         if (el._id === todoId) return {...el, title: newTodo}
+                    //         return el
+                    //     })
+                    //     setList(newList)
+                }
+            )
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+
+        await axios.get('http://localhost:5000/todo')
+            .then(function (response) {
+                    const listFromServer = response.data
+                    console.log(listFromServer)
+                    setList(listFromServer)
+                }
+            )
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+
     }
 
 

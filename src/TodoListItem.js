@@ -51,7 +51,7 @@ function TodoListItem(props) {
                 ) : (
                     <li style={titleStyle}>
                         {todoTitle}
-                        <button onClick={() => markAsDone(todoId)}>Done</button>
+                        <button onClick={() => markAsDone(todoId, todo.done)}>Done</button>
                         <button onClick={() => remove(todoId)}>x</button>
                         <button onClick={() => setIsEditMode(true)}>Edit</button>
                         <button onClick={() => moveDown(index)} disabled={index === length -1 }>Down</button>
