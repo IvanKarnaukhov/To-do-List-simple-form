@@ -86,32 +86,11 @@ function App() {
 
 
     const todoUpdate = async (todoId, newTodo) => {
-        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
-            .then(function (response) {
-                    //     const newList = [...list].map(el => {
-                    //         if (el._id === todoId) return {...el, title: newTodo}
-                    //         return el
-                    //     })
-                    //     setList(newList)
-                }
-            )
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-
-        await axios.get('http://localhost:5000/todo')
-            .then(function (response) {
-                    const listFromServer = response.data
-                    console.log(listFromServer)
-                    setList(listFromServer)
-                }
-            )
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-
+        const newList = [...list].map(el => {
+            if (el._id === todoId) return {...el, title: newTodo}
+            return el
+        })
+        setList(newList)
     }
 
 
