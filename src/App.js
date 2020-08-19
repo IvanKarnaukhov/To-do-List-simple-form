@@ -91,7 +91,7 @@ function App() {
             return el
         })
         setList(newList)
-    }
+    };
 
 
     const create = async (title) => {

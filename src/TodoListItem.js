@@ -43,7 +43,7 @@ function TodoListItem(props) {
                     <li style={titleStyle}>
                         {todoTitle}
                         <button onClick={() => doAgain(todoId)}>UnDone</button>
-                        <button onClick={() => remove(todoId)}>x</button>
+                        <button onClick={() => remove(todoId)}>Delete</button>
                         {/*<button onClick={() => moveDown(index)}>Down</button>*/}
                         {/*<button onClick={() => moveDown(index)} disabled={index === 2}>Down</button>*/}
                         {/*str[str.length - 1]*/}
