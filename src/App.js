@@ -7,55 +7,14 @@ import axios from 'axios';
 //     {id: 1, title: "first Todo", done: true},
 //     {id: 2, title: "second Todo", done: true},
 //     {id: 3, title: "third Todo", done: true},
-
 // ]
-
 
 function App() {
 
-    const [list, setList] = useState([]) //создали массив обектов
+    const [list, setList] = useState([])
 
-
-    const markAsDone = async (todoId, done) => {
-        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
-            .then(function (response) {
-                    //     const newList = [...list].map(el => {
-                    //         if (el._id === todoId) return {...el, done: true}
-                    //         return el
-                    //     })
-                    //     setList(newList)
-                }
-            )
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-
-        await axios.get('http://localhost:5000/todo')
-            .then(function (response) {
-                    const listFromServer = response.data
-                    console.log(listFromServer)
-                    setList(listFromServer)
-                }
-            )
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-
-    }
-
-
-    const doAgain = (todoId) => {
-        const newList = [...list].map(el => {
-            if (el._id === todoId) return {...el, done: false}
-            return el
-        })
-        setList(newList)
-    }
 
     const remove = async (todoId) => {
-
         await axios.delete(`http://localhost:5000/todo/${todoId}`)
             .then(function (response) {
                     // const newList = [...list].filter(el => el._id !== todoId)
@@ -66,7 +25,6 @@ function App() {
                 // handle error
                 console.log(error);
             })
-
 
         await axios.get('http://localhost:5000/todo')
             .then(function (response) {
@@ -84,20 +42,14 @@ function App() {
         // setList(newList)
     };
 
-
     const todoUpdate = async (todoId, newTodo) => {
-        const newList = [...list].map(el => {
-            if (el._id === todoId) return {...el, title: newTodo}
-            return el
-        })
-        setList(newList)
-    };
-
-
-    const create = async (title) => {
-
-        await axios.post('http://localhost:5000/todo', {name: title})
+        await axios.patch(`http://localhost:5000/todo/${todoId}`, {name: newTodo})
             .then(function (response) {
+                    // const newList = [...list].map(el => {
+                    //     if (el._id === todoId) return {...el, title: newTodo}
+                    //     return el
+                    // })
+                    // setList(newList)
 
                 }
             )
@@ -105,7 +57,6 @@ function App() {
                 // handle error
                 console.log(error);
             })
-
 
         await axios.get('http://localhost:5000/todo')
             .then(function (response) {
@@ -119,7 +70,54 @@ function App() {
                 console.log(error);
             })
 
-        await axios.get('http://localhost:5000/todo') //`http://localhost:5000/todo/${taskId}`
+    };
+
+    const create = async (title) => {
+
+            await axios.post('http://localhost:5000/todo', {name: title})
+                .then(function (response) {
+                    }
+                )
+                .catch((error) => console.log(error)
+                )
+
+            await axios.get('http://localhost:5000/todo')
+                .then(function (response) {
+
+                        // const listFromServer = response.data
+                        // console.log(listFromServer)
+                        setList(response.data)
+                    }
+                )
+                .catch((error) => console.log(error)
+                )
+
+// const newItem = {
+//     _id: Math.random() * 10,
+//     title: title,
+//     done: true,
+//}
+
+// const undatedList = [...list, newItem];
+// setList(undatedList)
+        }
+    ;
+
+    async function markAsDone(todoId, done) {
+        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
+            .then(function (response) {
+                    //     const newList = [...list].map(el => {
+                    //         if (el._id === todoId) return {...el, done: true}
+                    //         return el
+                    //     })
+                    //     setList(newList)
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        await axios.get('http://localhost:5000/todo')
             .then(function (response) {
                     const listFromServer = response.data
                     console.log(listFromServer)
@@ -127,21 +125,36 @@ function App() {
                 }
             )
             .catch(function (error) {
-                // handle error
                 console.log(error);
             })
 
+    }
 
-        // const newItem = {
-        //     _id: Math.random() * 10,
-        //     title: title,
-        //     done: true,
-        //}
+    async function doAgain(todoId, done) {
+        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: done})
+            .then(function (response) {
+                    // const newList = [...list].map(el => {
+                    //     if (el._id === todoId) return {...el, done: false}
+                    //     return el
+                    // })
+                    // setList(newList)
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            })
 
-
-        // const undatedList = [...list, newItem];
-        // setList(undatedList)
-    };
+        await axios.get('http://localhost:5000/todo')
+            .then(function (response) {
+                    const listFromServer = response.data
+                    console.log(listFromServer)
+                    setList(listFromServer)
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 
 
     const moveUp = (i) => {
@@ -176,8 +189,10 @@ function App() {
 
     return (
         <div>
-
-            <TodoCreateForm create={create}/>
+            <TodoCreateForm
+                create={create}
+                //const titleStyle = isTodoDone === false ? {textDecoration: "line-through", listStyleType: "none"} : {listStyleType: "none"}
+            />
             <TodoList
                 markAsDone={markAsDone}
                 doAgain={doAgain}
@@ -186,6 +201,7 @@ function App() {
                 todoUpdate={todoUpdate}
                 moveUp={moveUp}
                 moveDown={moveDown}
+
             />
 
         </div>

@@ -2,7 +2,7 @@
   "name": "cra15",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://IvanKarnaukhov.github.io/cra15",
+  "homepage": "https://IvanKarnaukhov.github.io/cra15",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -10,7 +10,7 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",

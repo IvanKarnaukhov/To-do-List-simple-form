@@ -11,7 +11,6 @@ function TodoList(props) {
         <div>
             To do list
 
-
             {list.map((el, i) => <TodoListItem
                 key={el._id}
                 todo={el}

@@ -25,6 +25,7 @@ function TodoCreateForm(props) {
             <button onClick={onCreate}>create</button>
             {/*<button onClick={ () => props.create(inputValue)}>create</button>*/}
 
+
         </div>
     );
 }
