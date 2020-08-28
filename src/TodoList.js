@@ -4,7 +4,7 @@ import TodoListItem from "./TodoListItem";
 
 function TodoList(props) {
 
-    const {markAsDone, doAgain, list, remove, todoUpdate, moveUp, moveDown} = props
+    const {doAgain, list, remove, todoUpdate, moveUp, moveDown} = props
     const length = list.length
 
     return (
@@ -15,7 +15,7 @@ function TodoList(props) {
                 key={el._id}
                 todo={el}
                 index={i}
-                markAsDone={markAsDone}
+                // markAsDone={markAsDone}
                 doAgain={doAgain}
                 remove={remove}
                 todoUpdate={todoUpdate}

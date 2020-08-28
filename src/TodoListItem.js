@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 function TodoListItem(props) {
 
     const [isEditMode, setIsEditMode] = useState(false)
-    const {todo, markAsDone, doAgain, remove, todoUpdate, index, moveUp, moveDown, length} = props
+    const {todo, doAgain, remove, todoUpdate, index, moveUp, moveDown, length} = props
 
 
     const isTodoDone = todo.done
@@ -25,11 +25,11 @@ function TodoListItem(props) {
         setIsEditMode(false)
     }
 // {isEditMode ? ( ) : ( ) }
-    if (isEditMode) {
-
-    } else {
-
-    }
+//     if (isEditMode) {
+//
+//     } else {
+//
+//     }
 
     return (
         <div>
@@ -39,27 +39,32 @@ function TodoListItem(props) {
                     <button onClick={saveButtonHandler}>Save</button>
                 </div>
             ) : (
-                <div>{isTodoDone ? (
+                <div>
+                    {/*{isTodoDone ? (*/}
                     <li style={titleStyle}>
                         {todoTitle}
-                        <button onClick={() => doAgain(todoId)}>UnDone</button>
+                        <button onClick={() => doAgain(todoId, isTodoDone)}>{isTodoDone ? 'unDone' : 'done'}</button>
                         <button onClick={() => remove(todoId)}>X</button>
-                        <button onClick={() => moveDown(index)}>Down</button>
-                        <button onClick={() => moveDown(index)} disabled={index === 2}>Down</button>
-                        {/*str[str.length - 1]*/}
-                    </li>
-                ) : (
-                    <li style={titleStyle}>
-                        {todoTitle}
-                        <button onClick={() => markAsDone(todoId, todo.done)}>Done</button>
-                        <button onClick={() => remove(todoId)}>x</button>
+                        {/*<button onClick={() => moveDown(index)}>Down</button>*/}
                         <button onClick={() => setIsEditMode(true)}>Edit</button>
                         <button onClick={() => moveDown(index)} disabled={index === length -1 }>Down</button>
                         <button onClick={() => moveUp(index)} disabled={index === 0}>Up</button>
+                        {/*<button onClick={() => moveDown(index)} disabled={index === 2}>Down</button>*/}
+                        {/*str[str.length - 1]*/}
+                    </li>
+                {/*) : (*/}
+                {/*    <li style={titleStyle}>*/}
+                        {/*{todoTitle}*/}
+                        {/*<button onClick={() => markAsDone(todoId, todo.done)}>Done</button>*/}
+                        {/*<button onClick={() => remove(todoId)}>x</button>*/}
+                        {/*<button onClick={() => setIsEditMode(true)}>Edit</button>*/}
+                        {/*<button onClick={() => moveUp(index)} disabled={index === 0}>Up</button>*/}
+                        {/*<button onClick={() => moveDown(index)} disabled={index === length -1 }>Down</button>*/}
                         {/*<button onClick={() => setIsEditMode(true)}>Edit</button>*/}
 
-                    </li>
-                )} </div>
+                    {/*</li>*/}
+                {/*)} */}
+                </div>
             )}
 
 

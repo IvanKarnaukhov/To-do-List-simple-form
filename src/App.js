@@ -103,35 +103,35 @@ function App() {
         }
     ;
 
-    async function markAsDone(todoId, done) {
-        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
-            .then(function (response) {
-                    //     const newList = [...list].map(el => {
-                    //         if (el._id === todoId) return {...el, done: true}
-                    //         return el
-                    //     })
-                    //     setList(newList)
-                }
-            )
-            .catch(function (error) {
-                console.log(error);
-            })
-
-        await axios.get('http://localhost:5000/todo')
-            .then(function (response) {
-                    const listFromServer = response.data
-                    console.log(listFromServer)
-                    setList(listFromServer)
-                }
-            )
-            .catch(function (error) {
-                console.log(error);
-            })
-
-    }
+    // async function markAsDone(todoId, done) {
+    //     await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
+    //         .then(function (response) {
+    //                 //     const newList = [...list].map(el => {
+    //                 //         if (el._id === todoId) return {...el, done: true}
+    //                 //         return el
+    //                 //     })
+    //                 //     setList(newList)
+    //             }
+    //         )
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         })
+    //
+    //     await axios.get('http://localhost:5000/todo')
+    //         .then(function (response) {
+    //                 const listFromServer = response.data
+    //                 console.log(listFromServer)
+    //                 setList(listFromServer)
+    //             }
+    //         )
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         })
+    //
+    // }
 
     async function doAgain(todoId, done) {
-        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: done})
+        await axios.put(`http://localhost:5000/todo/${todoId}`, {"done": !done})
             .then(function (response) {
                     // const newList = [...list].map(el => {
                     //     if (el._id === todoId) return {...el, done: false}
@@ -140,6 +140,7 @@ function App() {
                     // setList(newList)
                 }
             )
+
             .catch(function (error) {
                 console.log(error);
             })
@@ -194,7 +195,7 @@ function App() {
                 //const titleStyle = isTodoDone === false ? {textDecoration: "line-through", listStyleType: "none"} : {listStyleType: "none"}
             />
             <TodoList
-                markAsDone={markAsDone}
+                // markAsDone={markAsDone}
                 doAgain={doAgain}
                 list={list}
                 remove={remove}
