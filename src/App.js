@@ -173,7 +173,7 @@ function App() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:5000/todo')
+        axios.get('https://todo-server-ivan.herokuapp.com/todo')
             .then(function (response) {
                     const listFromServer = response.data
                     console.log(listFromServer)
