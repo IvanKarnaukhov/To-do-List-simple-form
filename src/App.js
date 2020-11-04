@@ -45,11 +45,11 @@ function App() {
     const todoUpdate = async (todoId, newTodo) => {
         await axios.patch(`http://localhost:5000/todo/${todoId}`, {name: newTodo})
             .then(function (response) {
-                    const newList = [...list].map(el => {
-                        if (el._id === todoId) return {...el, title: newTodo}
-                        return el
-                    })
-                    setList(newList)
+                    // const newList = [...list].map(el => {
+                    //     if (el._id === todoId) return {...el, title: newTodo}
+                    //     return el
+                    // })
+                    // setList(newList)
 
                 }
             )
@@ -84,8 +84,8 @@ function App() {
             await axios.get('http://localhost:5000/todo')
                 .then(function (response) {
 
-                        // const listFromServer = response.data
-                        // console.log(listFromServer)
+                        const listFromServer = response.data
+                        console.log(listFromServer)
                         setList(response.data)
                     }
                 )
