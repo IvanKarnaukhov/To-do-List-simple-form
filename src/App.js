@@ -84,22 +84,22 @@ function App() {
             await axios.get('http://localhost:5000/todo')
                 .then(function (response) {
 
-                        const listFromServer = response.data
-                        console.log(listFromServer)
+                        // const listFromServer = response.data
+                        // console.log(listFromServer)
                         setList(response.data)
                     }
                 )
                 .catch((error) => console.log(error)
                 )
 
-// const newItem = {
-//     _id: Math.random() * 10,
-//     title: title,
-//     done: true,
-//}
+const newItem = {
+    _id: Math.random() * 10,
+    title: title,
+    done: true,
+}
 
-// const undatedList = [...list, newItem];
-// setList(undatedList)
+const undatedList = [...list, newItem];
+setList(undatedList)
         }
     ;
 
