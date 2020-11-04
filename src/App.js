@@ -92,43 +92,43 @@ function App() {
                 .catch((error) => console.log(error)
                 )
 
-const newItem = {
-    _id: Math.random() * 10,
-    title: title,
-    done: true,
-}
+// const newItem = {
+//     _id: Math.random() * 10,
+//     title: title,
+//     done: true,
+//}
 
-const undatedList = [...list, newItem];
-setList(undatedList)
+// const undatedList = [...list, newItem];
+// setList(undatedList)
         }
     ;
 
-    // async function markAsDone(todoId, done) {
-    //     await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
-    //         .then(function (response) {
-    //                 //     const newList = [...list].map(el => {
-    //                 //         if (el._id === todoId) return {...el, done: true}
-    //                 //         return el
-    //                 //     })
-    //                 //     setList(newList)
-    //             }
-    //         )
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         })
-    //
-    //     await axios.get('http://localhost:5000/todo')
-    //         .then(function (response) {
-    //                 const listFromServer = response.data
-    //                 console.log(listFromServer)
-    //                 setList(listFromServer)
-    //             }
-    //         )
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         })
-    //
-    // }
+    async function markAsDone(todoId, done) {
+        await axios.put(`http://localhost:5000/todo/${todoId}`, {done: !done})
+            .then(function (response) {
+                    //     const newList = [...list].map(el => {
+                    //         if (el._id === todoId) return {...el, done: true}
+                    //         return el
+                    //     })
+                    //     setList(newList)
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        await axios.get('http://localhost:5000/todo')
+            .then(function (response) {
+                    const listFromServer = response.data
+                    console.log(listFromServer)
+                    setList(listFromServer)
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            })
+
+    }
 
     async function doAgain(todoId, done) {
         await axios.put(`http://localhost:5000/todo/${todoId}`, {"done": !done})
