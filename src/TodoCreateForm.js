@@ -23,7 +23,7 @@ function TodoCreateForm(props) {
             <input value={inputValue} onChange={inputOnChange}/>
             {/*<input value={inputValue} onChange={e => setInputValue(e.target.value)}/> как можно записать по другому*/}
             <button onClick={onCreate}>create</button>
-            {/*<button onClick={ () => props.create(inputValue)}>create</button>*/}
+            <button onClick={ () => props.create(inputValue)}>create</button>
 
 
         </div>
